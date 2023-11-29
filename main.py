@@ -3,15 +3,18 @@ from grades import calculate_grade
 
 def get_score(num_students):
     while True:
-        scores = input(f'Enter {num_students} score(s): ').split()
-        if len(scores) >= num_students:
-            scores = scores[:num_students]
-            break
+        try:
+            scores = input(f'Enter {num_students} score(s): ').split()
+            if len(scores) < num_students:
+                raise ValueError(f'Please enter at least {num_students} scores.')
 
-    student_scores = [int(score) for score in scores]
-    best = max(student_scores)
+            student_scores = [int(score) for score in scores]
+            best = max(student_scores)
 
-    return student_scores, best
+            return student_scores, best
+
+        except ValueError as e:
+            print(f'Error: {e}')
 
 
 def show_result(student_scores, best):
@@ -34,11 +37,18 @@ def save_to_file(filename, student_scores, best):
 def main():
     filename = 'student_scores.py'
 
-    num_students = int(input('Total number of students: '))
-    student_scores, best = get_score(num_students)
-    show_result(student_scores, best)
-    save_to_file(filename, student_scores, best)
+    while True:
+        try:
+            num_students = int(input('Total number of students: '))
+            if num_students <= 0:
+                raise ValueError('Number of students must be greater than 0.')
 
+            student_scores, best = get_score(num_students)
+            show_result(student_scores, best)
+            save_to_file(filename, student_scores, best)
+            break
+        except ValueError as e:
+            print(f'Error: {e}')
 
 
 if __name__ == '__main__':

@@ -1,2 +1,2 @@
-Best Score: 38
-Student Scores: 20, 38, 
+Best Score: 47
+Student Scores: 38, 47, 
