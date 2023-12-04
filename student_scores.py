@@ -1,2 +1,3 @@
-Best Score: 839
-Student Scores: 27, 512, 839, 82, 
+Best Score: 23
+Student Scores: 12, 23,
+
