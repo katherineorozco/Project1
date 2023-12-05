@@ -2,7 +2,7 @@ from PyQt6.QtWidgets import *
 from gui import *
 
 class Logic(QMainWindow, Ui_GradeCalc):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
         self.setupUi(self)
         self.input_total.setFocus()
@@ -10,12 +10,12 @@ class Logic(QMainWindow, Ui_GradeCalc):
         self.button_clear.clicked.connect(lambda: self.clear())
         self.label_result.setVisible(False)
 
-        self.scores = []
-        self.num_students = 0
-        self.best = 0
-        self.entry_counter = 1
+        self.scores: list[int] = []
+        self.num_students: int = 0
+        self.best: int = 0
+        self.entry_counter: int = 1
 
-    def save_data(self, scores, best):
+    def save_data(self, scores: list[int], best: int) -> None:
         """Save student scores to a file."""
         filename = 'student_scores.py'
         with open(filename, 'a') as file:
@@ -28,7 +28,7 @@ class Logic(QMainWindow, Ui_GradeCalc):
             self.entry_counter += 1
             file.write('\n\n')
 
-    def clear(self):
+    def clear(self) -> None:
         """Clear input fields and result label."""
         self.input_1.clear()
         self.input_2.clear()
@@ -37,7 +37,7 @@ class Logic(QMainWindow, Ui_GradeCalc):
         self.input_total.clear()
         self.label_result.clear()
 
-    def get_scores(self):
+    def get_scores(self) -> tuple[list[int], int]:
         """Get and validate student scores."""
         num1 = self.input_1.text().strip()
         num2 = self.input_2.text().strip()
@@ -69,7 +69,7 @@ class Logic(QMainWindow, Ui_GradeCalc):
         self.best = max(scores)
         return scores, self.best
 
-    def update_score(self):
+    def update_score(self) -> None:
         """Update student scores."""
         self.get_scores()
 
@@ -85,7 +85,7 @@ class Logic(QMainWindow, Ui_GradeCalc):
         else:
             return
 
-    def show_result(self, best):
+    def show_result(self, best: int) -> None:
         counter = 1
         result_text = ""
         scores, _ = self.get_scores()
