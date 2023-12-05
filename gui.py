@@ -16,7 +16,8 @@ class Ui_GradeCalc(object):
         self.centralwidget = QtWidgets.QWidget(parent=GradeCalc)
         self.centralwidget.setObjectName("centralwidget")
         self.label_total = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label_total.setGeometry(QtCore.QRect(20, 10, 171, 51))
+        self.label_total.setGeometry(QtCore.QRect(20, 20, 161, 41))
+        self.label_total.setWordWrap(True)
         self.label_total.setObjectName("label_total")
         self.label_score = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_score.setGeometry(QtCore.QRect(20, 80, 111, 16))
@@ -24,6 +25,7 @@ class Ui_GradeCalc(object):
         self.label_result = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_result.setGeometry(QtCore.QRect(80, 190, 261, 141))
         self.label_result.setText("")
+        self.label_result.setWordWrap(True)
         self.label_result.setObjectName("label_result")
         self.button_submit = QtWidgets.QPushButton(parent=self.centralwidget)
         self.button_submit.setGeometry(QtCore.QRect(220, 110, 131, 51))
@@ -61,7 +63,7 @@ class Ui_GradeCalc(object):
     def retranslateUi(self, GradeCalc):
         _translate = QtCore.QCoreApplication.translate
         GradeCalc.setWindowTitle(_translate("GradeCalc", "MainWindow"))
-        self.label_total.setText(_translate("GradeCalc", "Total number of students :"))
+        self.label_total.setText(_translate("GradeCalc", "Total number of students: (maximum number is 4) "))
         self.label_score.setText(_translate("GradeCalc", "Enter score(s) :"))
         self.button_submit.setText(_translate("GradeCalc", "Submit"))
         self.button_clear.setText(_translate("GradeCalc", "Clear"))
